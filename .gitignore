@@ -1,0 +1,27 @@
+# Node / web
+node_modules/
+dist/
+*.local
+.env*
+
+# .NET / mod builds
+bin/
+obj/
+out/
+*.dll
+*.pdb
+*.user
+.vs/
+.vscode/
+.idea/
+
+# Never commit game code or files
+src-decompiled/
+**/decompiled/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local working copy (contains decompiled game code): never commit
+znt-2p-mod/
