@@ -9,7 +9,7 @@ const links = [
 ]
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `rounded-lg px-3 py-1.5 transition-colors ${isActive ? 'bg-white/10 text-white' : 'text-zinc-300 hover:bg-white/10 hover:text-white'}`
+  `px-3 py-1.5 font-display text-[13px] uppercase tracking-[0.14em] transition-colors ${isActive ? 'text-teal-deep' : 'text-mute hover:text-ink'}`
 
 function GitHubIcon() {
   return (
@@ -24,7 +24,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
-      <nav className="mx-auto max-w-6xl rounded-2xl border border-white/10 bg-white/[0.06] px-3 pl-4 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150">
+      <nav className="mx-auto max-w-6xl glass px-3 pl-4">
         <div className="flex h-14 items-center justify-between gap-6">
           <Link to="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setOpen(false)}>
             <Logo />
@@ -46,7 +46,7 @@ export function Navbar() {
               href="https://github.com/SusieSalem/Subri2gether"
               target="_blank"
               rel="noreferrer"
-              className="flex shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-white/10 px-3.5 py-1.5 text-sm font-medium text-zinc-100 transition-colors hover:bg-white/15"
+              className="flex shrink-0 items-center gap-2 bg-ink px-3.5 py-1.5 font-display text-[13px] uppercase tracking-[0.14em] text-white transition-colors hover:bg-teal-deep"
             >
               <GitHubIcon />
               <span className="hidden sm:inline">GitHub</span>
@@ -56,7 +56,7 @@ export function Navbar() {
               aria-label="Menu"
               aria-expanded={open}
               onClick={() => setOpen((o) => !o)}
-              className="grid size-9 place-items-center rounded-xl text-zinc-300 hover:bg-white/10 sm:hidden"
+              className="grid size-9 place-items-center text-ink hover:text-teal-deep sm:hidden"
             >
               <svg viewBox="0 0 20 20" className="size-5" fill="none" stroke="currentColor" strokeWidth={1.75}>
                 {open ? <path d="m5 5 10 10M15 5 5 15" /> : <path d="M3 6h14M3 10h14M3 14h14" />}
@@ -66,7 +66,7 @@ export function Navbar() {
         </div>
 
         {open && (
-          <ul className="flex flex-col gap-1 border-t border-white/10 py-3 text-sm sm:hidden">
+          <ul className="flex flex-col gap-1 border-t border-ink/10 py-3 text-sm sm:hidden">
             {links.map((l) => (
               <li key={l.to}>
                 <NavLink to={l.to} className={(s) => `block ${linkClass(s)}`} onClick={() => setOpen(false)}>

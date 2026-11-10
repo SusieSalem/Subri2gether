@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ImagePlaceholder } from '../components/ImagePlaceholder'
+import { Bars, Emblem, PixelSlab } from '../components/Art'
 import { ModCard } from '../components/ModCard'
 import { Steps } from '../components/Steps'
+import { btnGhost, btnPrimary, linkMore, sectionTitle } from '../components/ui'
 import { mods } from '../data/mods'
 
 export function Home() {
@@ -9,58 +10,76 @@ export function Home() {
 
   return (
     <>
-      <section className="grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-24">
+      <section className="grid items-center gap-14 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
         <div>
-          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+          <Bars />
+          <p className="mt-6 text-[11px] uppercase tracking-[0.22em] text-mute">Local co-op mods · Unit 01</p>
+          <h1 className="mt-4 font-display text-5xl font-light leading-[1.05] tracking-wide text-ink sm:text-6xl">
             Single-player games,
             <br />
-            <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">made to play together.</span>
+            made to play <span className="font-medium text-teal-deep">together.</span>
           </h1>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-zinc-400">
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-mute">
             Subri2gether is a collection of mods that turn single-player games into local co-op for 2 to 4 people, on the same couch.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/mods" className="rounded-full bg-red-500 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-red-400">
+            <Link to="/mods" className={btnPrimary}>
               Browse mods
             </Link>
-            <Link to="/install" className="rounded-full px-6 py-2.5 text-sm font-semibold text-zinc-300 ring-1 ring-white/10 transition-colors hover:bg-white/5">
+            <Link to="/install" className={btnGhost}>
               How to install
             </Link>
           </div>
           <dl className="mt-12 flex gap-10">
             {[
-              [String(mods.length), mods.length === 1 ? 'mod' : 'mods'],
-              [`up to ${maxPlayers}`, 'players'],
-              ['100%', 'local'],
+              [String(mods.length).padStart(2, '0'), mods.length === 1 ? 'Mod' : 'Mods'],
+              [`0${maxPlayers}`, 'Players max'],
+              ['100', 'Percent local'],
             ].map(([v, l]) => (
               <div key={l}>
-                <dt className="text-2xl font-semibold text-zinc-100">{v}</dt>
-                <dd className="text-sm text-zinc-500">{l}</dd>
+                <dt className="font-display text-4xl font-light text-ink">{v}</dt>
+                <dd className="mt-1 text-[11px] uppercase tracking-[0.22em] text-mute">{l}</dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <ImagePlaceholder
-          image={{ src: '/images/site/hero.png', alt: 'Hero image' }}
-          label="Hero image · 4:3"
-          className="aspect-[4/3] w-full rounded-3xl ring-1 ring-white/10"
-        />
+        <div className="relative mx-auto w-full max-w-md">
+          <div className="glass hud float relative z-10 ml-auto w-[78%] p-8">
+            <div className="flex items-start justify-between">
+              <span className="font-display text-8xl font-light leading-none text-ink">01</span>
+              <span className="mt-2 size-2 rounded-full bg-rose" />
+            </div>
+            <dl className="mt-8 space-y-1.5 text-[12px] text-ink/80">
+              <div className="flex gap-2"><dt className="text-mute">Unit:</dt><dd>ZNT-2P</dd></div>
+              <div className="flex gap-2"><dt className="text-mute">Date of manufacture:</dt><dd>1010</dd></div>
+              <div className="flex gap-2"><dt className="text-mute">Players:</dt><dd>02 · linked</dd></div>
+              <div className="flex gap-2"><dt className="text-mute">Status:</dt><dd className="text-teal-deep">working</dd></div>
+            </dl>
+          </div>
+          <div className="absolute -bottom-12 left-0 h-[120%] w-[28%]">
+            <PixelSlab className="size-full" cols={9} rows={34} />
+          </div>
+          <div className="absolute -top-24 left-[30%] hidden items-center gap-3 sm:flex">
+            <Emblem className="size-20 text-ink" />
+            <p className="max-w-[9rem] text-[10px] leading-snug text-mute">A plan to let two minds share one game.</p>
+          </div>
+        </div>
       </section>
 
       <section className="py-12">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Latest mods</h2>
-            <p className="mt-2 text-zinc-400">Pick a game and grab a second controller.</p>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-mute">Catalog</p>
+            <h2 className={`mt-2 ${sectionTitle}`}>Latest mods</h2>
           </div>
-          <Link to="/mods" className="shrink-0 text-sm font-medium text-zinc-300 hover:text-white">
+          <Link to="/mods" className={linkMore}>
             All mods →
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {mods.slice(0, 3).map((mod) => (
-            <ModCard key={mod.id} mod={mod} />
+          {mods.slice(0, 3).map((mod, i) => (
+            <ModCard key={mod.id} mod={mod} index={i + 1} />
           ))}
         </div>
       </section>
@@ -68,10 +87,10 @@ export function Home() {
       <section className="py-12">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Up and running in minutes</h2>
-            <p className="mt-2 text-zinc-400">Three steps and you're done.</p>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-mute">Setup</p>
+            <h2 className={`mt-2 ${sectionTitle}`}>Up and running</h2>
           </div>
-          <Link to="/install" className="shrink-0 text-sm font-medium text-zinc-300 hover:text-white">
+          <Link to="/install" className={linkMore}>
             Full guide →
           </Link>
         </div>

@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
+import { btnPrimary } from '../components/ui'
 
 export function NotFound() {
   return (
     <div className="py-32 text-center">
-      <p className="font-mono text-sm text-red-400">404</p>
-      <h1 className="mt-3 text-4xl font-bold tracking-tight">Page not found</h1>
-      <Link to="/" className="mt-8 inline-block rounded-full bg-red-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-red-400">
+      <p className="font-display text-8xl font-light text-ink/80">404</p>
+      <p className="caret mt-4 text-[11px] uppercase tracking-[0.22em] text-mute">Unit not found</p>
+      <Link to="/" className={`${btnPrimary} mt-10`}>
         Back home
       </Link>
     </div>
