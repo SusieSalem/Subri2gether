@@ -108,3 +108,14 @@ export const mods: Mod[] = [
     sourcePath: 'mods/znt-2p',
   },
 ]
+
+export function playersLabel(mod: Mod) {
+  const { min, max } = mod.players
+  return min === max ? `${min} players` : `${min}–${max} players`
+}
+
+export const installSteps = [
+  { title: 'Install the loader', text: 'Download BepInEx 5.4.x and extract it into the game folder. Launch the game once.' },
+  { title: 'Copy the mod', text: 'Put the mod files in BepInEx/plugins/, inside their own folder.' },
+  { title: 'Plug in the controllers', text: "Connect the second player's controller before launching the game, and play." },
+]

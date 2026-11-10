@@ -2,8 +2,25 @@
   "hosting": {
     "site": "subri2gether",
     "public": "web/dist",
-    "ignore": ["firebase.json", "**/.*"],
-    "predeploy": ["npm --prefix web run build"],
-    "redirects": [{ "source": "/", "destination": "/subri2gether/", "type": 302 }]
+    "ignore": [
+      "firebase.json",
+      "**/.*"
+    ],
+    "predeploy": [
+      "npm --prefix web run build"
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/subri2gether/",
+        "type": 302
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/subri2gether/**",
+        "destination": "/subri2gether/index.html"
+      }
+    ]
   }
 }

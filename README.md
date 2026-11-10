@@ -1,6 +1,6 @@
-# Subri2gether — Co-Op Mod Hub
+# Subri2gether
 
-**Co-Op Mod Hub** is a website that collects my mods for turning single-player games into **local co-op** experiences for 2 to 4 players, so friends can play together on the same screen.
+**Subri2gether** is a website that collects my mods for turning single-player games into **local co-op** experiences for 2 to 4 players, so friends can play together on the same screen.
 
 The site will be hosted on **Firebase Hosting**. For each mod it will show:
 
