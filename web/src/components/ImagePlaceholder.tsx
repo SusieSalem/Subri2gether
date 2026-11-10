@@ -12,9 +12,11 @@ export function ImagePlaceholder({ image, className = '', label }: Props) {
   const [failed, setFailed] = useState(false)
 
   if (image.src && !failed) {
+    // Paths start at /images/...; prefix them with the site base (/subri2gether/).
+    const src = image.src.startsWith('/') ? import.meta.env.BASE_URL + image.src.slice(1) : image.src
     return (
       <img
-        src={image.src}
+        src={src}
         alt={image.alt}
         className={`object-cover ${className}`}
         loading="lazy"
