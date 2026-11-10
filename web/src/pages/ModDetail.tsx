@@ -23,7 +23,6 @@ export function ModDetail() {
   const specs = [
     ['Version', mod.version],
     ['Players', playersLabel(mod)],
-    ['Status', mod.status[0].toUpperCase() + mod.status.slice(1)],
     ['Requires', mod.loader],
   ]
 
@@ -57,7 +56,7 @@ export function ModDetail() {
         <ImagePlaceholder image={mod.cover} label="Cover · 16:9" className="aspect-video w-full" />
       </header>
 
-      <dl className="glass hud mt-12 grid grid-cols-2 divide-ink/10 sm:grid-cols-4 sm:divide-x">
+      <dl className="glass hud mt-12 grid grid-cols-2 divide-ink/10 sm:grid-cols-3 sm:divide-x">
         {specs.map(([k, v]) => (
           <div key={k} className="px-5 py-4">
             <dt className="text-[11px] uppercase tracking-[0.22em] text-mute">{k}</dt>
@@ -67,8 +66,7 @@ export function ModDetail() {
       </dl>
 
       <section className="mt-16">
-        <h2 className="font-display text-3xl font-light tracking-wide text-ink">Screenshots</h2>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-3">
           {mod.gallery.map((img) => (
             <ImagePlaceholder key={img.alt} image={img} className="aspect-video w-full" />
           ))}
@@ -77,9 +75,9 @@ export function ModDetail() {
 
       <section className="mt-16">
         <h2 className="font-display text-3xl font-light tracking-wide text-ink">Features</h2>
-        <ul className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-2">
           {mod.features.map((f) => (
-            <li key={f.name} className="glass sheen p-6">
+            <li key={f.name} className="border-t border-ink/10 pt-4">
               <p className="font-display text-lg font-medium text-ink">{f.name}</p>
               <p className="mt-2 text-sm leading-relaxed text-mute">{f.description}</p>
             </li>
@@ -87,7 +85,7 @@ export function ModDetail() {
         </ul>
       </section>
 
-      <div className="mt-16 grid gap-10 lg:grid-cols-2">
+      <div className="mt-16 grid gap-12">
         <section>
           <h2 className="font-display text-3xl font-light tracking-wide text-ink">Controls</h2>
           <div className="glass mt-6 overflow-hidden">
@@ -113,11 +111,12 @@ export function ModDetail() {
         </section>
 
         <section>
-          <h2 className="font-display text-3xl font-light tracking-wide text-ink">Settings</h2>
-          <p className="mt-2 text-sm text-mute">
-            Found in <code className="text-teal-deep">BepInEx/config/</code> after the first launch.
-          </p>
-          <dl className="glass mt-4 divide-y divide-ink/10">
+          <details className="group">
+            <summary className="flex cursor-pointer list-none items-center justify-between font-display text-3xl font-light tracking-wide text-ink">
+              Settings
+              <span className="text-xl text-mute transition-transform group-open:rotate-45">+</span>
+            </summary>
+                    <dl className="glass mt-4 divide-y divide-ink/10">
             {mod.config.map((o) => (
               <div key={`${o.section}.${o.key}`} className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-0.5 px-4 py-3 text-sm">
                 <dt className="font-mono text-xs text-ink">
@@ -128,6 +127,7 @@ export function ModDetail() {
               </div>
             ))}
           </dl>
+          </details>
         </section>
       </div>
     </article>

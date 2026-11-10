@@ -1,5 +1,4 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
-import { Bars } from './Art'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
 
@@ -11,7 +10,6 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <Bars className="mx-auto mb-6 justify-center" />
       <ScrollRestoration />
     </div>
   )

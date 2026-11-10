@@ -28,10 +28,7 @@ export function ImagePlaceholder({ image, className = '', label }: Props) {
   return (
     <div role="img" aria-label={image.alt} className={`glass hud relative flex items-center justify-center overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(28,39,41,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(28,39,41,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
-      <div className="relative text-center">
-        <p className="font-display text-3xl font-light text-ink/30">NO IMAGE</p>
-        <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-mute">{label ?? image.alt}</p>
-      </div>
+      <p className="relative text-[11px] uppercase tracking-[0.22em] text-ink/35">{label ?? image.alt}</p>
     </div>
   )
 }
