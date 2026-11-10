@@ -53,7 +53,7 @@ function App() {
           </div>
 
           <ImagePlaceholder
-            image={{ alt: 'Hero image' }}
+            image={{ src: '/images/site/hero.png', alt: 'Hero image' }}
             label="Hero image · 4:3"
             className="aspect-[4/3] w-full rounded-3xl ring-1 ring-white/10"
           />

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { ModImage } from '../data/mods'
 
 interface Props {
@@ -6,10 +7,20 @@ interface Props {
   label?: string
 }
 
-/** Muestra la imagen si existe; si no, un placeholder con el texto alternativo. */
+/** Shows the image if it exists; otherwise a placeholder with the alt text. */
 export function ImagePlaceholder({ image, className = '', label }: Props) {
-  if (image.src) {
-    return <img src={image.src} alt={image.alt} className={`object-cover ${className}`} loading="lazy" />
+  const [failed, setFailed] = useState(false)
+
+  if (image.src && !failed) {
+    return (
+      <img
+        src={image.src}
+        alt={image.alt}
+        className={`object-cover ${className}`}
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
+    )
   }
 
   return (

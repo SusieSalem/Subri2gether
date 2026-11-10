@@ -14,7 +14,7 @@ export interface ConfigOption {
 }
 
 export interface ModImage {
-  /** Path inside /public (for example /mods/znt-2p/cover.png). Empty = placeholder. */
+  /** Path inside web/public (for example /images/mods/znt-2p/cover.png). Shows a placeholder if the file is missing. */
   src?: string
   alt: string
 }
@@ -41,11 +41,11 @@ export const mods: Mod[] = [
   {
     id: 'znt-2p',
     tagline: 'Two minds, one horde.',
-    cover: { alt: 'ZNT 2 Player cover' },
+    cover: { src: '/images/mods/znt-2p/cover.png', alt: 'ZNT 2 Player cover' },
     gallery: [
-      { alt: 'Both cursors in a match' },
-      { alt: 'A fused zombie with its label' },
-      { alt: 'Fusion almanac' },
+      { src: '/images/mods/znt-2p/gallery-1.png', alt: 'Both cursors in a match' },
+      { src: '/images/mods/znt-2p/gallery-2.png', alt: 'A fused zombie with its label' },
+      { src: '/images/mods/znt-2p/gallery-3.png', alt: 'Fusion almanac' },
     ],
     title: 'ZNT 2 Player',
     game: 'Zombie Night Terror',

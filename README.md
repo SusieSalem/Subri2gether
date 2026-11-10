@@ -39,6 +39,21 @@ web/            The website (React + Vite + TypeScript + Tailwind CSS)
 mods/znt-2p/    ZNT 2 Player mod source (BepInEx plugin)
 ```
 
+## Images
+
+Screenshots and artwork for the site live in `web/public/images/`:
+
+```
+web/public/images/
+  site/hero.png              Main image on the home page
+  mods/znt-2p/cover.png      Mod cover (16:9)
+  mods/znt-2p/gallery-1.png  Gallery screenshots (16:9)
+  mods/znt-2p/gallery-2.png
+  mods/znt-2p/gallery-3.png
+```
+
+Drop a file with that name and it shows up on the site. Until then, a placeholder is shown. Each new mod gets its own folder under `mods/`, and its image paths go in `web/src/data/mods.ts`.
+
 ## License
 
 My code is released under the [MIT license](LICENSE). This repository does not include any game files, code or assets; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). All games belong to their respective owners.
