@@ -24,7 +24,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
-      <nav className="mx-auto max-w-6xl glass px-3 pl-4">
+      <nav className="mx-auto max-w-6xl glass-nav px-3 pl-4">
         <div className="flex h-14 items-center justify-between gap-6">
           <Link to="/" className="flex shrink-0 items-center gap-2.5" onClick={() => setOpen(false)}>
             <Logo />
